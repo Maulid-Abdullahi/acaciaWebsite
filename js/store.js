@@ -26,8 +26,8 @@ function ready() {
     document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked)
 }
 
-function purchaseClicked() {
-    alert('Thank you for your purchase')
+function purchaseClicked(e) {
+    handleSubmit()
     var cartItems = document.getElementsByClassName('cart-items')[0]
     while (cartItems.hasChildNodes()) {
         cartItems.removeChild(cartItems.firstChild)
@@ -35,6 +35,47 @@ function purchaseClicked() {
     updateCartTotal()
 }
 
+function handleSubmit(){
+
+    var phone = document.getElementById("phone").value;
+   
+    var cartItemContainer = document.getElementsByClassName('cart-items')[0]
+    var cartRows = cartItemContainer.getElementsByClassName('cart-row')
+    var totals = 0
+    for (var i = 0; i < cartRows.length; i++) {
+        var cartRow = cartRows[i]
+        var priceElement = cartRow.getElementsByClassName('cart-price')[0]
+        var quantityElement = cartRow.getElementsByClassName('cart-quantity-input')[0]
+        var price = parseFloat(priceElement.innerText.replace('ksh ', ''))
+        var quantity = quantityElement.value
+        totals = totals + (price * quantity)
+    }
+    totals = Math.round(totals * 100) / 100
+    document.getElementsByClassName('cart-total-price')[0].innerText = 'ksh ' + totals
+
+
+    const url = 'http://e5814cfbd11b.ngrok.io/push';
+    const Data = {
+        Amount: totals,
+        PhoneNumber : phone,
+        AccountReference: "Acacia Raw Honey"
+    }
+    const otherParam={
+        Headers:{
+            "content-type":"application/json; charset=UTF-8"
+        },
+        body: Data,
+        method: "POST"
+    }
+
+    fetch(url, otherParam)
+    .then(data =>{return data.json()})
+    .then(res => {console.log(res)})
+    .catch(error => console.log(error))
+
+    console.log('Data',Data)
+
+}
 function removeCartItem(event) {
     var buttonClicked = event.target
     buttonClicked.parentElement.parentElement.remove()
