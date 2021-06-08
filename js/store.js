@@ -54,17 +54,18 @@ function handleSubmit(){
     document.getElementsByClassName('cart-total-price')[0].innerText = 'ksh ' + totals
 
 
-    const url = 'http://e5814cfbd11b.ngrok.io/push';
-    const Data = {
+    const url = 'http://40b47442176b.ngrok.io/push';
+    const Data = 
+    {
         Amount: totals,
         PhoneNumber : phone,
         AccountReference: "Acacia Raw Honey"
     }
     const otherParam={
-        Headers:{
+        headers:{
             "content-type":"application/json; charset=UTF-8"
         },
-        body: Data,
+        body: JSON.stringify(Data),
         method: "POST"
     }
 
@@ -72,6 +73,8 @@ function handleSubmit(){
     .then(data =>{return data.json()})
     .then(res => {console.log(res)})
     .catch(error => console.log(error))
+
+    document.getElementById("phone").value = ""
 
     console.log('Data',Data)
 
