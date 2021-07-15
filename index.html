@@ -225,7 +225,7 @@
 						</a>
 						<div class="text py-3 pb-4 px-3 text-center">
 							<h3><a href="#" class="shop-item-title">Acacia Honey4</a></h3>
-									<p class="price"><span class="price-sale shop-item-price">ksh 300.00</span></p>
+									<p class="price"><span class="price-sale shop-item-price">ksh 1.00</span></p>
 									<button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
 						</div>
 					</div>
@@ -241,19 +241,24 @@
 			</div>
 			<div class="cart-items">
 			</div>
+
+      <Row>
+        <div class="cart-total">
+          <strong class="cart-total-title">Total</strong>
+          <span class="cart-total-price">ksh 0</span>
+        </div>
+        <div>
+          <h7>Lipa Na Mpesa Number</h7>
+          <form onsubmit="handleSubmit()">
+            <input type="text" id="phone" placeholder="###"/>
+            <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+          </form>
+         
+        </div>
+
+      </Row>
      
-			<div class="cart-total">
-				<strong class="cart-total-title">Total</strong>
-				<span class="cart-total-price">ksh 0</span>
-			</div>
-      <div>
-        <h7>Add Your Number</h7>
-        <form onsubmit="handleSubmit()">
-          <input type="number" id="phone" placeholder="###"/>
-          <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
-        </form>
-       
-      </div>
+		
 			<hr>
 		
 		</div>    
