@@ -8264,7 +8264,7 @@ h1, h2, h3, h4, h5,
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   border-radius: 50%;
-  background: #82ae46;
+  background: red;
   cursor: pointer;
   position: relative;
   text-align: center;
@@ -9112,7 +9112,7 @@ h1, h2, h3, h4, h5,
       -ms-border-radius: 0;
       border-radius: 0;
       font-size: 12px;
-      background: #82ae46 !important; }
+      background: red !important; }
       .subscribe-form .form-group .submit:hover {
         cursor: pointer; }
   .subscribe-form .icon {
